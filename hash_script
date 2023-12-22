@@ -1,0 +1,10 @@
+#!bin/bash
+
+if ! [[ "$1" =~ ^[0-9]{4}$ ]]; then
+    echo "Error: Please provide a valid 4-digit integer as input."
+    exit 1
+fi
+
+output=$(echo -n "$1" | sha256sum | awk '{print $1}')
+
+echo $output > hash_output.txt
